@@ -73,10 +73,8 @@ Dodatkowe narzêdzia do TDB.
 %patch2 -p1
 
 %build
-rm -f *.m4 missing
-cp -f /usr/share/automake/config.* .
-%{__aclocal}
 %{__libtoolize}
+%{__aclocal}
 %{__autoconf}
 %{__automake}
 %configure
