@@ -34,7 +34,7 @@ ekstremalnie ma³a.
 Summary:	Header files for TDB library
 Summary(pl):	Pliki nag³ówkowe biblioteki TDB
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description devel
 Header files for TDB library.
@@ -46,7 +46,7 @@ Pliki nag³ówkowe biblioteki TDB.
 Summary:	Static TDB library
 Summary(pl):	Statyczna biblioteka TDB
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static TDB library.
@@ -58,7 +58,7 @@ Statyczna biblioteka TDB.
 Summary:	TDB additional utilities
 Summary(pl):	Dodatkowe narzêdzia do TDB
 Group:		Applications/Databases
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description extras
 TDB additional utilities.
