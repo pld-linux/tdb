@@ -5,7 +5,7 @@
  
  noinst_PROGRAMS=tdbspeed tdbiterate $(TDBTEST) $(TDBTORTURE)
 -bin_PROGRAMS=tdbtool tdbdump
-+bin_PROGRAMS=tdbtool tdbdump $(noinst_PROGRAMS)
++bin_PROGRAMS=tdbtool tdbdump tdbspeed tdbiterate $(TDBTEST) $(TDBTORTURE)
  
  lib_LTLIBRARIES=libtdb.la
  
