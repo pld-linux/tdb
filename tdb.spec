@@ -54,6 +54,7 @@ Statyczna biblioteka TDB.
 %patch -p1
 
 %build
+cp -f /usr/share/automake/config.* .
 %{__autoconf}
 %configure
 %{__make}
