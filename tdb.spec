@@ -9,6 +9,7 @@ Source0:	http://dl.sourceforge.net/tdb/%{name}-%{version}.tar.gz
 # Source0-md5:	6b643fdeb48304010dcd5f675e458b58
 Patch0:		%{name}-gcc33.patch
 URL:		http://sourceforge.net/projects/tdb/
+BuildRequires:	autoconf
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -53,8 +54,8 @@ Statyczna biblioteka TDB.
 %patch -p1
 
 %build
-%configure2_13
-
+%{__autoconf}
+%configure
 %{__make}
 
 %install
