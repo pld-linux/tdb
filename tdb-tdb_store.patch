@@ -1,0 +1,27 @@
+--- tdb-1.0.6/tdb.c	Tue Dec 11 14:39:51 2001
++++ tdb-1.0.6-lbw/tdb.c	Mon Dec  2 14:50:37 2002
+@@ -1303,6 +1303,9 @@
+ 	char *p = NULL;
+ 	int ret = 0;
+ 
++	/* do not allow a store to read-only database */
++	if (tdb->read_only) return -1;
++
+ 	/* find which hash bucket it is in */
+ 	hash = tdb_hash(&key);
+ 	if (!tdb_keylocked(tdb, hash))
+--- tdb-1.0.6/tdb_open.3	Tue May  8 23:35:46 2001
++++ tdb-1.0.6-lbw/tdb_open.3	Mon Dec  2 14:53:03 2002
+@@ -20,10 +20,8 @@
+ .TP
+ .B TDB_INTERNAL
+ Don't use a file, instead store the data in memory. The 
+-.I pathname
+-,
+-.I open_flags
+-, and
++.I pathname 
++and
+ .I mode
+ are ignored in
+ this case. This is useful if you need a quick associative array or map.

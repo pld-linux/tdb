@@ -1,0 +1,11 @@
+--- tdb-1.0.6/Makefile.am.orig	2001-12-11 05:05:13.000000000 +0100
++++ tdb-1.0.6/Makefile.am	2004-11-12 00:33:16.133127976 +0100
+@@ -14,7 +14,7 @@
+ endif
+ 
+ noinst_PROGRAMS=tdbspeed tdbiterate $(TDBTEST) $(TDBTORTURE)
+-bin_PROGRAMS=tdbtool tdbdump
++bin_PROGRAMS=tdbtool tdbdump $(noinst_PROGRAMS)
+ 
+ lib_LTLIBRARIES=libtdb.la
+ 
