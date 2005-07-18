@@ -86,11 +86,6 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-#install tdbiterate $RPM_BUILD_ROOT%{_bindir}
-#install tdbspeed $RPM_BUILD_ROOT%{_bindir}
-#install tdbtest $RPM_BUILD_ROOT%{_bindir}
-#install tdbtorture $RPM_BUILD_ROOT%{_bindir}
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
