@@ -1,5 +1,5 @@
 Summary:	TDB - Trivial Database
-Summary(pl):	TDB - prosta baza danych
+Summary(pl.UTF-8):   TDB - prosta baza danych
 Name:		tdb
 Version:	1.0.6
 Release:	3
@@ -23,48 +23,48 @@ BSD's DB except that it allows multiple simultaneous writers and uses
 locking internally to keep writers from trampling on each other. TDB
 is also extremely small.
 
-%description -l pl
-TDB to Trivial Database, czyli prosta baza danych. W za³o¿eniach jest
-bardzo podobna do GDBM lub DB z BSD z wyj±tkiem tego, ¿e pozwala na
-zapis wielu procesom jednocze¶nie i u¿ywa wewnêtrznie blokowania, aby
-nie pozwoliæ pisz±cym na zadeptanie siê nawzajem. TDB jest ponadto
-ekstremalnie ma³a.
+%description -l pl.UTF-8
+TDB to Trivial Database, czyli prosta baza danych. W zaÅ‚oÅ¼eniach jest
+bardzo podobna do GDBM lub DB z BSD z wyjÄ…tkiem tego, Å¼e pozwala na
+zapis wielu procesom jednoczeÅ›nie i uÅ¼ywa wewnÄ™trznie blokowania, aby
+nie pozwoliÄ‡ piszÄ…cym na zadeptanie siÄ™ nawzajem. TDB jest ponadto
+ekstremalnie maÅ‚a.
 
 %package devel
 Summary:	Header files for TDB library
-Summary(pl):	Pliki nag³ówkowe biblioteki TDB
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe biblioteki TDB
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
 Header files for TDB library.
 
-%description devel -l pl
-Pliki nag³ówkowe biblioteki TDB.
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe biblioteki TDB.
 
 %package static
 Summary:	Static TDB library
-Summary(pl):	Statyczna biblioteka TDB
+Summary(pl.UTF-8):   Statyczna biblioteka TDB
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static TDB library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka TDB.
 
 %package extras
 Summary:	TDB additional utilities
-Summary(pl):	Dodatkowe narzêdzia do TDB
+Summary(pl.UTF-8):   Dodatkowe narzÄ™dzia do TDB
 Group:		Applications/Databases
 Requires:	%{name} = %{version}-%{release}
 
 %description extras
 TDB additional utilities.
 
-%description extras -l pl
-Dodatkowe narzêdzia do TDB.
+%description extras -l pl.UTF-8
+Dodatkowe narzÄ™dzia do TDB.
 
 %prep
 %setup -q
