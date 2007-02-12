@@ -1,5 +1,5 @@
 Summary:	TDB - Trivial Database
-Summary(pl.UTF-8):   TDB - prosta baza danych
+Summary(pl.UTF-8):	TDB - prosta baza danych
 Name:		tdb
 Version:	1.0.6
 Release:	3
@@ -32,7 +32,7 @@ ekstremalnie mała.
 
 %package devel
 Summary:	Header files for TDB library
-Summary(pl.UTF-8):   Pliki nagłówkowe biblioteki TDB
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki TDB
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -44,7 +44,7 @@ Pliki nagłówkowe biblioteki TDB.
 
 %package static
 Summary:	Static TDB library
-Summary(pl.UTF-8):   Statyczna biblioteka TDB
+Summary(pl.UTF-8):	Statyczna biblioteka TDB
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
@@ -56,7 +56,7 @@ Statyczna biblioteka TDB.
 
 %package extras
 Summary:	TDB additional utilities
-Summary(pl.UTF-8):   Dodatkowe narzędzia do TDB
+Summary(pl.UTF-8):	Dodatkowe narzędzia do TDB
 Group:		Applications/Databases
 Requires:	%{name} = %{version}-%{release}
 
