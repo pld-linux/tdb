@@ -2,7 +2,7 @@ Summary:	TDB - Trivial Database
 Summary(pl.UTF-8):	TDB - prosta baza danych
 Name:		tdb
 Version:	1.0.6
-Release:	3
+Release:	4
 License:	GPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/tdb/%{name}-%{version}.tar.gz
