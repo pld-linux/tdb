@@ -1,20 +1,18 @@
+%define	snap	20080818
 Summary:	TDB - Trivial Database
 Summary(pl.UTF-8):	TDB - prosta baza danych
 Name:		tdb
-Version:	1.0.6
-Release:	4
+Version:	1.1.2
+Release:	0.%{snap}.1
 License:	GPL
 Group:		Libraries
-Source0:	http://dl.sourceforge.net/tdb/%{name}-%{version}.tar.gz
-# Source0-md5:	6b643fdeb48304010dcd5f675e458b58
-Patch0:		%{name}-gcc33.patch
-Patch1:		%{name}-tdb_store.patch
-Patch2:		%{name}-Makefile-extras.patch
-URL:		http://sourceforge.net/projects/tdb/
-BuildRequires:	autoconf
-BuildRequires:	automake
+Source0:	%{name}-%{snap}.tar.bz2
+# Source0-md5:	128dfb4865c2fcabf36d8cfbb1d20d06
+URL:		http://tdb.samba.org/
 BuildRequires:	gdbm-devel
-BuildRequires:	libtool
+BuildRequires:	python-devel
+BuildRequires:	rpm-pythonprov
+Obsoletes:	tdb-extras
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -66,17 +64,19 @@ TDB additional utilities.
 %description extras -l pl.UTF-8
 Dodatkowe narzędzia do TDB.
 
+%package -n python-tdb
+Summary:	Python bindings for TDB
+Group:		Libraries/Python
+Requires:	%{name} = %{version}-%{release}
+%pyrequires_eq  python-libs
+
+%description -n python-tdb
+Python bindings for TDB.
+
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%setup -q -n %{name}
 
 %build
-%{__libtoolize}
-%{__aclocal}
-%{__autoconf}
-%{__automake}
 %configure
 %{__make}
 
@@ -86,6 +86,12 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+install libtdb.so $RPM_BUILD_ROOT%{_libdir}
+
+%py_comp $RPM_BUILD_ROOT
+%py_ocomp $RPM_BUILD_ROOT
+%py_postclean
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -94,7 +100,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README TODO
+%doc docs/README
+%attr(755,root,root) %{_bindir}/tdbbackup
 %attr(755,root,root) %{_bindir}/tdbdump
 %attr(755,root,root) %{_bindir}/tdbtool
 %attr(755,root,root) %{_libdir}/lib*.so.*.*.*
@@ -102,17 +109,14 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
 %{_includedir}/tdb.h
-%{_mandir}/man3/*
+%{_pkgconfigdir}/*.pc
 
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
 
-%files extras
+%files -n python-tdb
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/tdbiterate
-%attr(755,root,root) %{_bindir}/tdbspeed
-%attr(755,root,root) %{_bindir}/tdbtest
-%attr(755,root,root) %{_bindir}/tdbtorture
+%attr(755,root,root) %{py_sitedir}/*.so
+%{py_sitescriptdir}/*.py[co]
