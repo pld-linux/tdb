@@ -52,18 +52,6 @@ Static TDB library.
 %description static -l pl.UTF-8
 Statyczna biblioteka TDB.
 
-%package extras
-Summary:	TDB additional utilities
-Summary(pl.UTF-8):	Dodatkowe narzędzia do TDB
-Group:		Applications/Databases
-Requires:	%{name} = %{version}-%{release}
-
-%description extras
-TDB additional utilities.
-
-%description extras -l pl.UTF-8
-Dodatkowe narzędzia do TDB.
-
 %package -n python-tdb
 Summary:	Python bindings for TDB
 Group:		Libraries/Python
