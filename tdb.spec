@@ -3,7 +3,7 @@ Summary:	TDB - Trivial Database
 Summary(pl.UTF-8):	TDB - prosta baza danych
 Name:		tdb
 Version:	1.1.2
-Release:	0.%{snap}.2
+Release:	0.%{snap}.3
 License:	GPL
 Group:		Libraries
 Source0:	%{name}-%{snap}.tar.bz2
@@ -74,7 +74,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install libtdb.so $RPM_BUILD_ROOT%{_libdir}
+# it's a symlink
+cp -a libtdb.so $RPM_BUILD_ROOT%{_libdir}
 
 %py_comp $RPM_BUILD_ROOT
 %py_ocomp $RPM_BUILD_ROOT
