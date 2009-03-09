@@ -1,13 +1,13 @@
-%define	snap	20080818
+%define	snap	20090309
 Summary:	TDB - Trivial Database
 Summary(pl.UTF-8):	TDB - prosta baza danych
 Name:		tdb
-Version:	1.1.2
-Release:	0.%{snap}.3
+Version:	1.1.3
+Release:	0.%{snap}.1
 License:	GPL
 Group:		Libraries
 Source0:	%{name}-%{snap}.tar.bz2
-# Source0-md5:	128dfb4865c2fcabf36d8cfbb1d20d06
+# Source0-md5:	1a08aba5ebf8d21c18b2abaa970c6935
 URL:		http://tdb.samba.org/
 BuildRequires:	gdbm-devel
 BuildRequires:	python-devel
@@ -71,7 +71,7 @@ Python bindings for TDB.
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
+%{__make} install install-python \
 	DESTDIR=$RPM_BUILD_ROOT
 
 # it's a symlink
@@ -108,4 +108,3 @@ rm -rf $RPM_BUILD_ROOT
 %files -n python-tdb
 %defattr(644,root,root,755)
 %attr(755,root,root) %{py_sitedir}/*.so
-%{py_sitescriptdir}/*.py[co]
