@@ -8,7 +8,6 @@ Group:		Libraries
 Source0:	http://samba.org/ftp/tdb/%{name}-%{version}.tar.gz
 # Source0-md5:	4d97d18bbe9040038d4e003495bb8cd1
 URL:		http://tdb.samba.org/
-BuildRequires:	gdbm-devel
 BuildRequires:	python-devel
 BuildRequires:	rpm-pythonprov
 Obsoletes:	tdb-extras
@@ -73,13 +72,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
-
-# it's a symlink
-#cp -a libtdb.so $RPM_BUILD_ROOT%{_libdir}
-
-#py_comp $RPM_BUILD_ROOT
-#py_ocomp $RPM_BUILD_ROOT
-#py_postclean
 
 %clean
 rm -rf $RPM_BUILD_ROOT
