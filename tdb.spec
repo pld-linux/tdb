@@ -2,7 +2,8 @@ Summary:	TDB - Trivial Database
 Summary(pl.UTF-8):	TDB - prosta baza danych
 Name:		tdb
 Version:	1.2.9
-Release:	1
+Release:	2
+Epoch:		2
 License:	LGPL v3+
 Group:		Libraries
 Source0:	http://samba.org/ftp/tdb/%{name}-%{version}.tar.gz
@@ -78,6 +79,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
+
+%triggerpostun -p /sbin/postshell -- %{name} < 2:1.2.9-2
+-rm -f %{_libdir}/libtdb.so.1
+/sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
