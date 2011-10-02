@@ -2,7 +2,7 @@ Summary:	TDB - Trivial Database
 Summary(pl.UTF-8):	TDB - prosta baza danych
 Name:		tdb
 Version:	1.2.9
-Release:	2
+Release:	3
 Epoch:		2
 License:	LGPL v3+
 Group:		Libraries
@@ -31,7 +31,7 @@ ekstremalnie mała.
 Summary:	Header files for TDB library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki TDB
 Group:		Development/Libraries
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name} = %{epoch}:%{version}-%{release}
 Obsoletes:	tdb-static
 
 %description devel
@@ -44,7 +44,7 @@ Pliki nagłówkowe biblioteki TDB.
 Summary:	Python bindings for TDB
 Summary(pl.UTF-8):	Pythonowy interfejs do TDB
 Group:		Libraries/Python
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name} = %{epoch}:%{version}-%{release}
 %pyrequires_eq  python-libs
 
 %description -n python-tdb
