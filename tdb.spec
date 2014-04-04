@@ -1,15 +1,15 @@
 Summary:	TDB - Trivial Database
 Summary(pl.UTF-8):	TDB - prosta baza danych
 Name:		tdb
-Version:	1.2.12
+Version:	1.2.13
 Release:	1
 Epoch:		2
 License:	LGPL v3+
 Group:		Libraries
-Source0:	http://samba.org/ftp/tdb/%{name}-%{version}.tar.gz
-# Source0-md5:	53e6168a7c2c93735a1c024fd2c3a7b4
+Source0:	http://www.samba.org/ftp/tdb/%{name}-%{version}.tar.gz
+# Source0-md5:	2dc44a8538c4c8fcc9f9ba00fb041ce4
 URL:		http://tdb.samba.org/
-BuildRequires:	python-devel
+BuildRequires:	python-devel >= 2
 BuildRequires:	rpm-pythonprov
 Obsoletes:	tdb-extras
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -80,7 +80,7 @@ rm -rf $RPM_BUILD_ROOT
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
 
-%triggerpostun -p /sbin/postshell -- %{name} < 2:1.2.9-2
+%triggerpostun -p /sbin/postshell -- tdb < 2:1.2.9-2
 -rm -f %{_libdir}/libtdb.so.1
 /sbin/ldconfig
 
