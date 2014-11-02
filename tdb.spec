@@ -8,6 +8,7 @@ License:	LGPL v3+
 Group:		Libraries
 Source0:	http://www.samba.org/ftp/tdb/%{name}-%{version}.tar.gz
 # Source0-md5:	f597190451d976fe013dfae9934fb9ad
+Patch0:		%{name}-include.patch
 URL:		http://tdb.samba.org/
 BuildRequires:	python-devel >= 2
 BuildRequires:	rpm-pythonprov
@@ -55,6 +56,7 @@ Pythonowy interfejs do TDB.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 # note: configure in fact is waf call

@@ -1,0 +1,10 @@
+--- tdb-1.3.1/include/tdb.h.orig	2014-09-16 20:04:31.000000000 +0200
++++ tdb-1.3.1/include/tdb.h	2014-11-02 09:30:00.151156564 +0100
+@@ -31,6 +31,7 @@
+ #endif
+ 
+ #include <signal.h>
++#include <stdbool.h>
+ 
+ /**
+  * @defgroup tdb The tdb API
