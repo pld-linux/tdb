@@ -1,16 +1,17 @@
 Summary:	TDB - Trivial Database
 Summary(pl.UTF-8):	TDB - prosta baza danych
 Name:		tdb
-Version:	1.3.6
+Version:	1.3.7
 Release:	1
 Epoch:		2
 License:	LGPL v3+
 Group:		Libraries
 Source0:	https://www.samba.org/ftp/tdb/%{name}-%{version}.tar.gz
-# Source0-md5:	d4df2bcebbcd18463408b5a1ccb5b71b
+# Source0-md5:	e3741a19c427255acd1e92c5e09d9df7
 URL:		http://tdb.samba.org/
 BuildRequires:	python-devel >= 2
 BuildRequires:	rpm-pythonprov
+BuildRequires:	rpmbuild(macros) >= 1.219
 Obsoletes:	tdb-extras
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -75,6 +76,10 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%py_comp $RPM_BUILD_ROOT%{py_sitedir}
+%py_ocomp $RPM_BUILD_ROOT%{py_sitedir}
+%py_postclean
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -108,3 +113,4 @@ rm -rf $RPM_BUILD_ROOT
 %files -n python-tdb
 %defattr(644,root,root,755)
 %attr(755,root,root) %{py_sitedir}/tdb.so
+%{py_sitedir}/_tdb_text.py[co]
