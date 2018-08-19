@@ -1,13 +1,13 @@
 Summary:	TDB - Trivial Database
 Summary(pl.UTF-8):	TDB - prosta baza danych
 Name:		tdb
-Version:	1.3.15
+Version:	1.3.16
 Release:	1
 Epoch:		2
 License:	LGPL v3+
 Group:		Libraries
 Source0:	https://www.samba.org/ftp/tdb/%{name}-%{version}.tar.gz
-# Source0-md5:	60ece3996acc8d85b6f713199da971a6
+# Source0-md5:	7d06d8709188e07df853d9e91db88927
 URL:		http://tdb.samba.org/
 BuildRequires:	python-devel >= 1:2.4.2
 BuildRequires:	rpm-pythonprov
