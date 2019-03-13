@@ -1,15 +1,20 @@
+#
+# Conditional build:
+%bcond_without	python2	# CPython 2.x binding
+
 Summary:	TDB - Trivial Database
 Summary(pl.UTF-8):	TDB - prosta baza danych
 Name:		tdb
-Version:	1.3.16
+Version:	1.3.18
 Release:	1
 Epoch:		2
 License:	LGPL v3+
 Group:		Libraries
 Source0:	https://www.samba.org/ftp/tdb/%{name}-%{version}.tar.gz
-# Source0-md5:	7d06d8709188e07df853d9e91db88927
+# Source0-md5:	fdb34ed48478a084e9e0c310cc178e87
 URL:		http://tdb.samba.org/
-BuildRequires:	python-devel >= 1:2.4.2
+%{?with_python2:BuildRequires:	python-devel >= 1:2.4.2}
+BuildRequires:	python3-devel >= 1:3.2
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
 Obsoletes:	tdb-extras
@@ -42,30 +47,44 @@ Header files for TDB library.
 Pliki nagłówkowe biblioteki TDB.
 
 %package -n python-tdb
-Summary:	Python bindings for TDB
-Summary(pl.UTF-8):	Pythonowy interfejs do TDB
+Summary:	Python 2 bindings for TDB
+Summary(pl.UTF-8):	Interfejs Pythona 2 do TDB
 Group:		Libraries/Python
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-%pyrequires_eq  python-libs
+Requires:	python-libs >= 1:2.4.2
 
 %description -n python-tdb
-Python bindings for TDB.
+Python 2 bindings for TDB.
 
 %description -n python-tdb -l pl.UTF-8
-Pythonowy interfejs do TDB.
+Interfejs Pythona 2 do TDB.
+
+%package -n python3-tdb
+Summary:	Python 3 bindings for TDB
+Summary(pl.UTF-8):	Interfejs Pythona 3 do TDB
+Group:		Libraries/Python
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+Requires:	python3-libs >= 1:3.2
+
+%description -n python3-tdb
+Python 3 bindings for TDB.
+
+%description -n python3-tdb -l pl.UTF-8
+Interfejs Pythona 3 do TDB.
 
 %prep
 %setup -q
 
 %build
-# note: configure in fact is waf call
+export JOBS=1
+
 CC="%{__cc}" \
 CFLAGS="%{rpmcflags}" \
-PYTHONDIR=%{py_sitedir} \
-./configure \
+%{__python3} buildtools/bin/waf configure \
 	--prefix=%{_prefix} \
 	--libdir=%{_libdir} \
-	--disable-rpath
+	--disable-rpath \
+	%{?with_python2:--extra-python=%{__python}}
 
 %{__make} \
 	V=1
@@ -76,9 +95,14 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%if %{with python2}
 %py_comp $RPM_BUILD_ROOT%{py_sitedir}
 %py_ocomp $RPM_BUILD_ROOT%{py_sitedir}
 %py_postclean
+%endif
+
+%py3_comp $RPM_BUILD_ROOT%{py3_sitedir}
+%py3_ocomp $RPM_BUILD_ROOT%{py3_sitedir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -110,7 +134,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/tdb.h
 %{_pkgconfigdir}/tdb.pc
 
+%if %{with python2}
 %files -n python-tdb
 %defattr(644,root,root,755)
 %attr(755,root,root) %{py_sitedir}/tdb.so
 %{py_sitedir}/_tdb_text.py[co]
+%endif
+
+%files -n python3-tdb
+%defattr(644,root,root,755)
+%attr(755,root,root) %{py3_sitedir}/tdb.cpython-*.so
+%{py3_sitedir}/_tdb_text.py
+%{py3_sitedir}/__pycache__/_tdb_text.cpython-*.py[co]
