@@ -1,19 +1,15 @@
 #
-# Conditional build:
-%bcond_without	python2	# CPython 2.x binding
-
 Summary:	TDB - Trivial Database
 Summary(pl.UTF-8):	TDB - prosta baza danych
 Name:		tdb
-Version:	1.3.18
-Release:	2
+Version:	1.4.2
+Release:	1
 Epoch:		2
 License:	LGPL v3+
 Group:		Libraries
 Source0:	https://www.samba.org/ftp/tdb/%{name}-%{version}.tar.gz
-# Source0-md5:	fdb34ed48478a084e9e0c310cc178e87
+# Source0-md5:	b2c05ad68334368d3258a63db709f254
 URL:		http://tdb.samba.org/
-%{?with_python2:BuildRequires:	python-devel >= 1:2.4.2}
 BuildRequires:	python3-devel >= 1:3.2
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
@@ -46,19 +42,6 @@ Header files for TDB library.
 %description devel -l pl.UTF-8
 Pliki nagłówkowe biblioteki TDB.
 
-%package -n python-tdb
-Summary:	Python 2 bindings for TDB
-Summary(pl.UTF-8):	Interfejs Pythona 2 do TDB
-Group:		Libraries/Python
-Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	python-libs >= 1:2.4.2
-
-%description -n python-tdb
-Python 2 bindings for TDB.
-
-%description -n python-tdb -l pl.UTF-8
-Interfejs Pythona 2 do TDB.
-
 %package -n python3-tdb
 Summary:	Python 3 bindings for TDB
 Summary(pl.UTF-8):	Interfejs Pythona 3 do TDB
@@ -83,8 +66,7 @@ CFLAGS="%{rpmcflags}" \
 %{__python3} buildtools/bin/waf configure \
 	--prefix=%{_prefix} \
 	--libdir=%{_libdir} \
-	--disable-rpath \
-	%{?with_python2:--extra-python=%{__python}}
+	--disable-rpath
 
 %{__make} \
 	V=1
@@ -94,12 +76,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
-
-%if %{with python2}
-%py_comp $RPM_BUILD_ROOT%{py_sitedir}
-%py_ocomp $RPM_BUILD_ROOT%{py_sitedir}
-%py_postclean
-%endif
 
 %py3_comp $RPM_BUILD_ROOT%{py3_sitedir}
 %py3_ocomp $RPM_BUILD_ROOT%{py3_sitedir}
@@ -133,13 +109,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libtdb.so
 %{_includedir}/tdb.h
 %{_pkgconfigdir}/tdb.pc
-
-%if %{with python2}
-%files -n python-tdb
-%defattr(644,root,root,755)
-%attr(755,root,root) %{py_sitedir}/tdb.so
-%{py_sitedir}/_tdb_text.py[co]
-%endif
 
 %files -n python3-tdb
 %defattr(644,root,root,755)
