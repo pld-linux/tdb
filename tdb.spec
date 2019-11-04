@@ -3,7 +3,7 @@ Summary:	TDB - Trivial Database
 Summary(pl.UTF-8):	TDB - prosta baza danych
 Name:		tdb
 Version:	1.4.2
-Release:	1
+Release:	2
 Epoch:		2
 License:	LGPL v3+
 Group:		Libraries
@@ -14,6 +14,7 @@ BuildRequires:	python3-devel >= 1:3.2
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
 Obsoletes:	tdb-extras
+Obsoletes:	python-tdb
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
