@@ -1,4 +1,3 @@
-#
 Summary:	TDB - Trivial Database
 Summary(pl.UTF-8):	TDB - prosta baza danych
 Name:		tdb
@@ -14,6 +13,7 @@ BuildRequires:	python3-devel >= 1:3.2
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
 Obsoletes:	tdb-extras
+# tdb 1.4+ dropped python2 suport
 Obsoletes:	python-tdb
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
