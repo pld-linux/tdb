@@ -8,10 +8,10 @@ License:	LGPL v3+
 Group:		Libraries
 Source0:	https://www.samba.org/ftp/tdb/%{name}-%{version}.tar.gz
 # Source0-md5:	e638e8890f743624a754304b3f994f4d
-URL:		http://tdb.samba.org/
+URL:		https://tdb.samba.org/
 BuildRequires:	python3-devel >= 1:3.2
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.219
+BuildRequires:	rpmbuild(macros) >= 1.507
 Obsoletes:	tdb-extras
 # tdb 1.4+ dropped python2 suport
 Obsoletes:	python-tdb
