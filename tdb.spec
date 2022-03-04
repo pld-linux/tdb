@@ -13,7 +13,7 @@ BuildRequires:	libbsd-devel
 BuildRequires:	python3-devel >= 1:3.2
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.507
-Obsoletes:	tdb-extras
+Obsoletes:	tdb-extras < 1.1
 # tdb 1.4+ dropped python2 suport
 Obsoletes:	python-tdb < 2:1.4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
