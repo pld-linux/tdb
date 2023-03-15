@@ -10,7 +10,9 @@ Source0:	https://www.samba.org/ftp/tdb/%{name}-%{version}.tar.gz
 # Source0-md5:	2b46875d656cafd13f5d1d5bc64bfa21
 URL:		https://tdb.samba.org/
 BuildRequires:	libbsd-devel
+BuildRequires:	libxslt-progs
 BuildRequires:	python3-devel >= 1:3.2
+BuildRequires:	python3-modules
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.507
 Obsoletes:	tdb-extras < 1.1
